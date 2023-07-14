@@ -1,4 +1,4 @@
-# archcraft-dwm
-DWM for Archcraft
+# dwm modified for my needs and wants
 
-Credit : [chadwm](https://github.com/siduck/chadwm)
+Credit : 
+[Archcraft](https://github.com/archcraft-os/archcraft-dwm)
