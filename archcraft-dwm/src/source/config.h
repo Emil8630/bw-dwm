@@ -7,7 +7,7 @@
  * */
 
 /* ******************** Configurations ******************** */
-static const unsigned int borderpx  		= 1;	/* border pixel of windows */
+static const unsigned int borderpx  		= 3;	/* border pixel of windows */
 static const unsigned int default_border 	= 1;	// to switch back to default border after dynamic border resizing via keybinds
 static const unsigned int snap      		= 32;	/* snap pixel */
 static const unsigned int gappih    		= 5;	/* horiz inner gap between windows */
@@ -18,7 +18,7 @@ static 				  int smartgaps         = 0;	/* 1 means no outer gap when there is on
 static const unsigned int systraypinning 	= 0;	/* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing 	= 10;	/* systray spacing */
 static const int systraypinningfailfirst 	= 1;	/* 1: if pinning fails,display systray on the 1st monitor,False: display systray on last monitor*/
-static const int showsystray        		= 1;	/* 0 means no systray */
+static const int showsystray        		= 0;	/* 0 means no systray */
 static const int showbar            		= 1;	/* 0 means no bar */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always };
 static const int showtab            		= showtab_auto;
@@ -299,14 +299,14 @@ static Key keys[] = {
     { MODKEY, 					XK_f, 						togglefullscr, {0} },
 
     { MODKEY, 					XK_space, 					setlayout, {0} }, 
-	{ MODKEY, 					XK_t, 						setlayout, {.v = &layouts[0]} }, // Tile
+/*	{ MODKEY, 					XK_t, 						setlayout, {.v = &layouts[0]} }, // Tile
     { MODKEY, 					XK_g, 						setlayout, {.v = &layouts[10]} }, // Grid
     { MODKEY|ShiftMask, 		XK_m, 						setlayout, {.v = &layouts[1]} }, // Monocle
     { MODKEY|ShiftMask, 		XK_s, 						setlayout, {.v = &layouts[2]} }, // Spiral
     { MODKEY|ShiftMask, 		XK_t, 						setlayout, {.v = &layouts[5]} }, // Stack
     { MODKEY|ControlMask, 		XK_c, 						setlayout, {.v = &layouts[11]} }, // Centered master
     { MODKEY|ShiftMask, 		XK_x, 						setlayout, {.v = &layouts[13]} }, // Tatami
-    
+  */  
 };
 
 /* ******************** Button definitions ******************** */

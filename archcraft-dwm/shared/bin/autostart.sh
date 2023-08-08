@@ -40,9 +40,16 @@ hsetroot -cover /usr/share/archcraft/dwm/wallpapers/default.png
 exec mpd &
 
 exec mullvad connect &
-exec xrandr --output HDMI-0 --rate 144 --mode 1920x1080 &
-exec xrandr --output HDMI3 --left-of HDMI-0 --mode 1920x1080 --rate 60 &
-exec xrandr --output VGA1 --right-of HDMI-0 --mode 1920x1080 --rate 60 &
+#exec xrandr --output HDMI-0 --rate 144 --mode 1920x1080 &
+#exec xrandr --output HDMI3 --left-of HDMI-0 --mode 1920x1080 --rate 60 &
+#exec xrandr --output VGA1 --right-of HDMI-0 --mode 1920x1080 --rate 60 &
+
+exec xrandr --output DP-0 --primary --mode 1920x1080 --rate 143.85 &
+#exec sleep 2
+exec xrandr --output HDMI-0 --left-of DP-0 --mode 1920x1080 &
+#exec sleep 2
+exec xrandr --output HDMI3 --right-of DP-0 --mode 1920x1080 &
+
 exec variety &
 #exec nitrogen --restore &
 exec discord &

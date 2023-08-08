@@ -29,6 +29,11 @@ clock() {
 	printf "^c#1d1f1d^^b#e1e3da^ $(date '+%a %d %b, %H:%M') "
 }
 
+clockdark() {
+	#printf "^c#B8BAB4^^b#0f100f^  "
+	printf "^c#B8BAB4^^b#1b1b1b^  $(date '+%a %d %b, %H:%M') "
+}
+
 ## System Update
 updates() {
 	updates=$(checkupdates | wc -l)
@@ -43,11 +48,17 @@ updates() {
 	fi
 }
 
+## Kernel Version
+kernel() {
+	#printf "^c#B8BAB4^^b#0f100f^  "
+	printf "^c#B8BAB4^^b#1b1b1b^  $(uname -r) "
+	printf "^c#0f100f^^b#0f100f^  "
+}
 
 ## Main
 while true; do
   [ "$interval" == 0 ] || [ $(("$interval" % 3600)) == 0 ] && updates=$(updates)
   interval=$((interval + 1))
 
-  sleep 1 && xsetroot -name "$(updates) $(clock)"
+  sleep 1 && xsetroot -name "$(updates) $(kernel) $(clockdark)"
 done
