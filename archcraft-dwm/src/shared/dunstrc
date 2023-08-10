@@ -59,13 +59,13 @@ foreground = "#545862"
 frame_color = "#0f100f"
 
 [urgency_normal]
-timeout = 5
+timeout = 2
 background = "#0f100f"
 foreground = "#545862"
 frame_color = "#0f100f"
 
 [urgency_critical]
-timeout = 0
+timeout = 10
 background = "#e06c75"
 foreground = "#b8bab4"
 frame_color = "#e06c75"

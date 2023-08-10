@@ -38,13 +38,16 @@ clockdark() {
 updates() {
 	updates=$(checkupdates | wc -l)
 
-	if [ "$updates" -ge 500 ]; then
-		printf "^c#e1e3da^  $updates"" updates"
+	if [ "$updates" -ge 300 ]; then
+    printf "^c#B8BAB4^^b#1b1b1b^  $updates updates"
+  	printf "^c#0f100f^^b#0f100f^  "
     #printf "^c#e1e3da^  Updated"
   elif [[ "$updates" -ge 1000 ]]; then
-    printf "^c#FF0000^  $updates"" updates" 
+#    printf "^c#e06c75^  $updates"" updates" 
+    printf "^c#B8BAB4^^b#e06c75^  $updates updates"
+   	printf "^c#0f100f^^b#0f100f^  "
 	else
-		time
+    :
 	fi
 }
 
