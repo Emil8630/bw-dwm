@@ -57,7 +57,10 @@ static const char *colors[][3]  = {
 };
 
 /* ******************** Tags/Workspaces ******************** */
+//static char *tags[] = {"WWW", "DEV", "SYS", "MUS"};
 static char *tags[] = {"", "", "", ""};
+//static char *tags[] = {"I", "II", "III", "IV"};
+//static char *tags[] = {"1", "2", "3", "4"};
 
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
                                   SchemeTag4
