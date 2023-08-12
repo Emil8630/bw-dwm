@@ -15,35 +15,92 @@ memory() {
 	printf "^c#e1e3da^^b#1d1f1d^   $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g) "
 }
 
+## Battery
+battery() {
+
+    battery_state=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -oP 'state:\s+\K\w+')
+    
+    if [[ $battery_state == "discharging" ]]; then
+        battery_percentage=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -oP 'percentage:\s+\K\d+%')
+
+        if [[ -n $battery_percentage ]]; then
+            percentage_number=${battery_percentage}  # Remove the '%' sign
+            if ((percentage_number >= 100)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰁹 $battery_percentage "
+            elif ((percentage_number >= 90)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰂂 $battery_percentage "
+            elif ((percentage_number >= 80)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰂁 $battery_percentage "
+            elif ((percentage_number >= 70)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰂀 $battery_percentage "
+            elif ((percentage_number >= 60)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰁿 $battery_percentage "
+            elif ((percentage_number >= 50)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰁾 $battery_percentage "
+            elif ((percentage_number >= 40)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰁽 $battery_percentage "
+            elif ((percentage_number >= 30)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰁼 $battery_percentage "
+            elif ((percentage_number >= 20)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰁻 $battery_percentage "
+            elif ((percentage_number >= 10)); then
+                printf "^c#B8BAB4^^b#c18873^ 󰁺 $battery_percentage "
+            elif ((percentage_number >= 5)); then
+                printf "^c#B8BAB4^^b#e06c75^ 󰂃 $battery_percentage "
+            else
+                :
+            fi
+        else
+            :
+        fi
+    elif [[ $battery_state == "charging" ]]; then
+        battery_percentage=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -oP 'percentage:\s+\K\d+%')
+
+        if [[ -n $battery_percentage ]]; then
+            percentage_number=${battery_percentage}  # Remove the '%' sign
+            if ((percentage_number >= 100)); then
+                printf "^c#B8BAB4^^b#58d3a9^ 󰂅 $battery_percentage "
+            elif ((percentage_number >= 90)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰂋 $battery_percentage "
+            elif ((percentage_number >= 80)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰂊 $battery_percentage "
+            elif ((percentage_number >= 70)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰢞 $battery_percentage "
+            elif ((percentage_number >= 60)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰂉 $battery_percentage "
+            elif ((percentage_number >= 50)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰢝 $battery_percentage "
+            elif ((percentage_number >= 40)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰂈 $battery_percentage "
+            elif ((percentage_number >= 30)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰂇 $battery_percentage "
+            elif ((percentage_number >= 20)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰂆 $battery_percentage "
+            elif ((percentage_number >= 10)); then
+                printf "^c#B8BAB4^^b#1b1b1b^ 󰢜 $battery_percentage "
+            else
+                :
+            fi
+        else
+            :
+        fi
+    else
+        :
+    fi
+
+}
+
 # Networking
 
 ## Wi-fi
 wlan() {
 	case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
-		up) printf "^c#3b414d^^b#7aa2f7^  ^d^%s" " ^c#7aa2f7^Connected " ;;
-		down) printf "^c#3b414d^^b#E06C75^ 睊 ^d^%s" " ^c#E06C75^Disconnected " ;;
+    up) printf "^c#B8BAB4^^b#1b1b1b^  ^d^%s Connected" ;;
+    down) printf "^c#B8BAB4^^b#1b1b1b^ 睊 ^d^%s Disconnected" ;;
 	esac
 }
 ## Mullvad connection
-: <<'COMMENT'
-
 mullvad() {
-  status=$(mullvad status)
-
-  # Check if the status contains "Connected" or "Disconnected"
-  if [[ $status == "Connected" ]]; then
-      printf "^c#B8BAB4^^b#1b1b1b^ 󰒘 "
-      printf "^c#0f100f^^b#0f100f^  "
-  elif [[ $status == "Disconnected" ]]; then
-      printf "^c#B8BAB4^^b#e06c75^ 󰻌 Mullvad is disconnected. " 
-      printf "^c#0f100f^^b#0f100f^  "
-  else
-      printf "^c#B8BAB4^^b#e06c75^ 󰻌 Mullvad is disconnected. " 
-      printf "^c#0f100f^^b#0f100f^  "
-  fi
-}
-COMMENT
-mullvad2() {
 
   status_output=$(mullvad status)
 
@@ -106,5 +163,5 @@ while true; do
   [ "$interval" == 0 ] || [ $(("$interval" % 3600)) == 0 ] && updates=$(updates)
   interval=$((interval + 1))
 
-  sleep 1 && xsetroot -name "$(updates) $(mullvad2) $(kernel) $(clockdark)"
+  sleep 1 && xsetroot -name "$(updates) $(mullvad) $(kernel) $(clockdark)"
 done
