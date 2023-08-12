@@ -45,9 +45,9 @@ battery() {
             elif ((percentage_number >= 20)); then
                 printf "^c#B8BAB4^^b#1b1b1b^ 󰁻 $battery_percentage "
             elif ((percentage_number >= 10)); then
-                printf "^c#B8BAB4^^b#c18873^ 󰁺 $battery_percentage "
+                printf "^c#1b1b1b^^b#c18873^ 󰁺 $battery_percentage "
             elif ((percentage_number >= 5)); then
-                printf "^c#B8BAB4^^b#e06c75^ 󰂃 $battery_percentage "
+                printf "^c#1b1b1b^^b#e06c75^ 󰂃 $battery_percentage "
             else
                 :
             fi
