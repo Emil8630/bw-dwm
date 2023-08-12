@@ -16,6 +16,7 @@ memory() {
 }
 
 ## Battery
+: '
 battery() {
 
     battery_state=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -oP 'state:\s+\K\w+')
@@ -89,13 +90,28 @@ battery() {
     fi
 
 }
-
+'
 # Networking
 
 ## Wi-fi
 wlan() {
+
+  target_host="8.8.8.8"  # Google's DNS server
+
+# Run ping and capture output
+  ping_output=$(ping -c 4 -q $target_host)
+
+# Extract round-trip times from ping output
+  rtt_min=$(echo "$ping_output" | awk -F '/' 'END {print $4}')
+  rtt_avg=$(echo "$ping_output" | awk -F '/' 'END {print $5}')
+  rtt_max=$(echo "$ping_output" | awk -F '/' 'END {print $6}')
+
+# Calculate rough download and upload speeds
+  download_speed=$(echo "scale=2; 1000 / $rtt_avg" | bc)
+  upload_speed=$(echo "scale=2; 1000 / $rtt_max" | bc)
+
 	case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
-    up) printf "^c#B8BAB4^^b#1b1b1b^  ^d^%s Connected" ;;
+    up) printf "^c#B8BAB4^^b#1b1b1b^  ^d^%s Connected ( $upload_speed/ $download_speed)" ;;
     down) printf "^c#B8BAB4^^b#1b1b1b^ 睊 ^d^%s Disconnected" ;;
 	esac
 }
