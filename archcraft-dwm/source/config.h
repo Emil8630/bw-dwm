@@ -61,6 +61,8 @@ static const char *colors[][3]  = {
 static char *tags[] = {"", "", "", ""};
 //static char *tags[] = {"I", "II", "III", "IV"};
 //static char *tags[] = {"1", "2", "3", "4"};
+//static char *tags[] = {"󰬺", "󰬻", "󰬼", "󰬽"};
+//static char *tags[] = {"", "", "", ""};
 
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
                                   SchemeTag4

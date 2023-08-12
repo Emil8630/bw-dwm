@@ -58,7 +58,7 @@ mullvad2() {
       printf "^c#B8BAB4^^b#1b1b1b^ 󰒘 $server "
       printf "^c#0f100f^^b#0f100f^  "
   elif [[ "$status" = *"Disconnected"* ]]; then
-      printf "^c#B8BAB4^^b#e06c75^ 󰻌 Mullvad is disconnected. " 
+      printf "^c#B8BAB4^^b#e06c75^ 󰦞 Mullvad is disconnected. " 
       printf "^c#0f100f^^b#0f100f^  "
   else
       :
