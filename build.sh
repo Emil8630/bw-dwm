@@ -21,9 +21,9 @@ build_pkg () {
 	echo -e "\nBuilding Package ${1} - \n"
 	cd ${1} && makepkg -sc
 
-	if [[ "$1" == "archcraft-st" ]]; then
-		rm *.tar.gz
-	fi
+#	if [[ "$1" == "archcraft-st" ]]; then
+#		rm *.tar.gz
+#	fi
 	
 	RDIR='../../../pkgs/x86_64'
 	if [[ -d "$RDIR" ]]; then
@@ -35,4 +35,4 @@ build_pkg () {
 
 # Execute
 build_pkg archcraft-dwm
-build_pkg archcraft-st
+#build_pkg archcraft-st
