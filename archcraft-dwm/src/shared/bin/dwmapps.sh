@@ -7,7 +7,7 @@
 if [[ "$1" == "--file" ]]; then
 	thunar
 elif [[ "$1" == "--editor" ]]; then
-	codium
+	flatpak run md.obsidian.Obsidian
 elif [[ "$1" == "--web" ]]; then
 	#cd /opt/mullvad
 	#./start-mullvad-browser.desktop
