@@ -298,13 +298,13 @@ static Key keys[] = {
 	// Layouts -----------
     { ALTKEY|ControlMask, 		XK_space, 					spawn, {.v = rofi_layoutcmd } },
 
-    { MODKEY|ControlMask, 		XK_comma, 					cyclelayout, {.i = -1 } },
-    { MODKEY|ControlMask, 		XK_period, 					cyclelayout, {.i = +1 } },
+  /*  { MODKEY|ControlMask, 		XK_comma, 					cyclelayout, {.i = -1 } },
+    { MODKEY|ControlMask, 		XK_period, 					cyclelayout, {.i = +1 } },*/
     { MODKEY|ShiftMask, 		XK_space, 					togglefloating, {0} },
     { MODKEY, 					XK_f, 						togglefullscr, {0} },
-
+/*
     { MODKEY, 					XK_space, 					setlayout, {0} }, 
-/*	{ MODKEY, 					XK_t, 						setlayout, {.v = &layouts[0]} }, // Tile
+	{ MODKEY, 					XK_t, 						setlayout, {.v = &layouts[0]} }, // Tile
     { MODKEY, 					XK_g, 						setlayout, {.v = &layouts[10]} }, // Grid
     { MODKEY|ShiftMask, 		XK_m, 						setlayout, {.v = &layouts[1]} }, // Monocle
     { MODKEY|ShiftMask, 		XK_s, 						setlayout, {.v = &layouts[2]} }, // Spiral

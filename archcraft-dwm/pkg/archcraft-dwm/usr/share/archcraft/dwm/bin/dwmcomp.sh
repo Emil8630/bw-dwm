@@ -9,4 +9,4 @@ killall -q picom
 while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
 
 # Launch picom
-picom --config /home/$(whoami)/bw-dwm/archcraft-dwm/shared/min-picom.conf &
+picom --config /home/$(whoami)/github/bw-dwm/archcraft-dwm/shared/min-picom.conf &
